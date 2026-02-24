@@ -5,7 +5,7 @@ import { View } from 'react-native'
 
 export default function _layout() {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <ThemeProvider>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
@@ -13,6 +13,5 @@ export default function _layout() {
         </Stack>
       </ThemeProvider>
     </View>
-
   )
 }
