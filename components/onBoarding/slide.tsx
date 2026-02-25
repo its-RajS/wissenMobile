@@ -6,7 +6,6 @@ import {
     windowWidth,
 } from "@/themes/app.constants";
 import { Ionicons } from "@expo/vector-icons";
-import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
@@ -20,7 +19,7 @@ import {
 } from "react-native";
 import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 import { Defs, RadialGradient, Rect, Stop, Svg } from "react-native-svg";
-// import AuthModal from "../auth/auth.modal";
+import AuthModal from "../auth/auth.modal";
 
 export default function Slide({
     slide,
@@ -151,23 +150,7 @@ export default function Slide({
                 }}
             >
                 <Pressable style={{ flex: 1 }} onPress={() => setModalVisible(false)}>
-                    <BlurView intensity={10} style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                        {/* <AuthModal setModalVisible={setModalVisible} /> */}
-                        <Pressable style={{
-                            width: windowWidth(420),
-                            height: windowHeight(250),
-                            backgroundColor: "white",
-                            borderRadius: windowWidth(20),
-                            marginHorizontal: windowWidth(50),
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                            onPress={e => e.stopPropagation()}
-                        >
-                            <Text>Hello</Text>
-                        </Pressable>
-
-                    </BlurView>
+                    <AuthModal setModalVisible={setModalVisible} />
                 </Pressable>
             </Modal>
         </>
