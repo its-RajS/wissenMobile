@@ -1,18 +1,18 @@
 import * as React from "react";
 import { scale, verticalScale } from "react-native-size-matters";
 import Svg, {
-  G,
-  Ellipse,
-  Rect,
   Defs,
-  Pattern,
-  Use,
-  RadialGradient,
-  Stop,
+  Ellipse,
+  G,
   Image,
+  Pattern,
+  RadialGradient,
+  Rect,
+  Stop,
+  Use,
 } from "react-native-svg";
 
-const Three = (props) => (
+const Three = (props: any) => (
   <Svg
     width={scale(430)}
     height={verticalScale(300)}

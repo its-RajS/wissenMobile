@@ -1,13 +1,9 @@
-//@ts-ignore
-import One from "@/assets/svgs/onboarding/1.png";
-//@ts-ignore
-import Two from "@/assets/svgs/onboarding/2.png";
-//@ts-ignore
-import Three from "@/assets/svgs/onboarding/3.png";
-import { IsIPAD } from "@/themes/app.constants";
+import One from "@/assets/svgs/onboarding/1";
+import Two from "@/assets/svgs/onboarding/2";
+import Three from "@/assets/svgs/onboarding/3";
 
-import { Dimensions, Image } from "react-native";
-import { scale, verticalScale } from "react-native-size-matters";
+import { Dimensions } from "react-native";
+import { verticalScale } from "react-native-size-matters";
 
 
 export const onBoardingSlides: OnBoardingSlidesTypes[] = [
@@ -15,13 +11,7 @@ export const onBoardingSlides: OnBoardingSlidesTypes[] = [
         color: "#40E0D0",
         title: "Explore",
         image: (
-            <Image
-                source={One}
-                style={{
-                    width: IsIPAD ? verticalScale(285) : verticalScale(320),
-                    height: IsIPAD ? verticalScale(345) : verticalScale(330),
-                }}
-            />
+            <One width={verticalScale(320)} height={verticalScale(330)} />
         ),
         secondaryTitle: "Our Community",
         subTitle:
@@ -31,13 +21,7 @@ export const onBoardingSlides: OnBoardingSlidesTypes[] = [
         color: "#A7F893",
         title: "Set Your",
         image: (
-            <Image
-                source={Two}
-                style={{
-                    width: IsIPAD ? scale(285) : scale(320),
-                    height: IsIPAD ? verticalScale(345) : verticalScale(330),
-                }}
-            />
+            <Two width={verticalScale(320)} height={verticalScale(330)} />
         ),
         secondaryTitle: "Own Goal",
         subTitle:
@@ -46,13 +30,7 @@ export const onBoardingSlides: OnBoardingSlidesTypes[] = [
     {
         color: "#FFC0CB",
         image: (
-            <Image
-                source={Three}
-                style={{
-                    width: IsIPAD ? scale(285) : scale(320),
-                    height: IsIPAD ? verticalScale(345) : verticalScale(330),
-                }}
-            />
+            <Three width={verticalScale(320)} height={verticalScale(330)} />
         ),
         title: "Complete full",
         secondaryTitle: "Course",

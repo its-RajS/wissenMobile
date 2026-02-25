@@ -6,6 +6,7 @@ import {
     windowWidth,
 } from "@/themes/app.constants";
 import { Ionicons } from "@expo/vector-icons";
+import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
@@ -150,7 +151,23 @@ export default function Slide({
                 }}
             >
                 <Pressable style={{ flex: 1 }} onPress={() => setModalVisible(false)}>
-                    {/* <AuthModal setModalVisible={setModalVisible} /> */}
+                    <BlurView intensity={10} style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                        {/* <AuthModal setModalVisible={setModalVisible} /> */}
+                        <Pressable style={{
+                            width: windowWidth(420),
+                            height: windowHeight(250),
+                            backgroundColor: "white",
+                            borderRadius: windowWidth(20),
+                            marginHorizontal: windowWidth(50),
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                            onPress={e => e.stopPropagation()}
+                        >
+                            <Text>Hello</Text>
+                        </Pressable>
+
+                    </BlurView>
                 </Pressable>
             </Modal>
         </>
@@ -213,4 +230,4 @@ const styles = StyleSheet.create({
         top: Platform.OS === "ios" ? verticalScale(345) : verticalScale(385),
         transform: [{ translateY: -30 }],
     },
-});
+})

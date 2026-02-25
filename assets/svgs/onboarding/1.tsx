@@ -1,23 +1,30 @@
 import * as React from "react";
+import { useWindowDimensions } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
 import Svg, {
-  G,
-  Ellipse,
-  Rect,
   Defs,
-  Pattern,
-  Use,
-  RadialGradient,
-  Stop,
+  Ellipse,
+  G,
   Image,
+  Pattern,
+  RadialGradient,
+  Rect,
+  Stop,
+  Use
 } from "react-native-svg";
 
-const One = (props) => (
+const One = (props: any) => {
+
+  const { width: screenWidth } = useWindowDimensions(); // ADD THIS
+  const svgWidth = screenWidth * 0.85; // 85% of screen width
+  const svgHeight = verticalScale(330);
+
+
   <Svg
-    width={scale(450)}
-    height={verticalScale(330)}
+    width={svgWidth}
+    height={svgHeight}
     style={{
-      marginLeft: scale(20),
+      marginLeft: 0,
       marginTop: verticalScale(10),
     }}
     viewBox="0 0 430 449"
@@ -73,5 +80,5 @@ const One = (props) => (
       />
     </Defs>
   </Svg>
-);
+}
 export default One;
