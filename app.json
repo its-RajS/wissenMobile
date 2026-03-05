@@ -4,7 +4,7 @@
     "slug": "wissen",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "",
     "scheme": "wissenmobile",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -42,7 +42,13 @@
           }
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.966018821751-dcjt6vps26ck395m7pv0tmptbr829ppl"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

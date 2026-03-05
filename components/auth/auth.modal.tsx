@@ -1,7 +1,8 @@
 import { fontSizes, windowHeight, windowWidth } from '@/themes/app.constants'
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import { BlurView } from 'expo-blur'
-import React from 'react'
+import JWT from "expo-jwt"
+import React, { useEffect } from 'react'
 import { Image, Platform, Pressable, Text, View } from 'react-native'
 
 
@@ -11,11 +12,11 @@ export default function AuthModal({ setModalVisible }: { setModalVisible: (val: 
         try {
             if (Platform.OS === 'ios') {
                 GoogleSignin.configure({
-                    iosClientId: process.env.EXPO_PUBLIC_IOS__GOOGLE_API_KEY,
+                    iosClientId: process.env.EXPO_PUBLIC_IOS_GOOGLE_API_KEY,
                 });
             } else {
                 GoogleSignin.configure({
-                    webClientId: "YOUR_WEB_CLIENT_ID",
+                    webClientId: process.env.EXPO_PUBLIC_ANDROID_GOOGLE_API_KEY,
                 });
             }
         } catch (error) {
@@ -23,8 +24,48 @@ export default function AuthModal({ setModalVisible }: { setModalVisible: (val: 
         }
     }
 
+    useEffect(() => {
+        configureGoogleSignIn()
+    }, [])
+
+
     const googleSignIn = async () => {
-        console.log("Google Sign In");
+        try {
+            await GoogleSignin.hasPlayServices();
+            const user = await GoogleSignin.signIn();
+            authHandler({
+                name: user.data?.user.name!,
+                email: user.data?.user.email!,
+                avatar: user.data?.user.photo!
+            })
+            console.log(user);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const authHandler = async ({
+        name,
+        email,
+        avatar
+    }: {
+        name: string;
+        email: string;
+        avatar: string;
+    }) => {
+        try {
+            const user = {
+                name, email, avatar
+            }
+            const token = JWT.encode(
+                {
+                    ...user
+                },
+                process.env.EXPO_PUBLIC_JWT_SECRET!
+            )
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
