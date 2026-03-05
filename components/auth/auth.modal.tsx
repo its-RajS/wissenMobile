@@ -1,9 +1,12 @@
 import { fontSizes, windowHeight, windowWidth } from '@/themes/app.constants'
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import {
+    GoogleSignin
+} from '@react-native-google-signin/google-signin'
 import { BlurView } from 'expo-blur'
 import JWT from "expo-jwt"
 import React, { useEffect } from 'react'
 import { Image, Platform, Pressable, Text, View } from 'react-native'
+
 
 
 export default function AuthModal({ setModalVisible }: { setModalVisible: (val: boolean) => void }) {
@@ -16,7 +19,7 @@ export default function AuthModal({ setModalVisible }: { setModalVisible: (val: 
                 });
             } else {
                 GoogleSignin.configure({
-                    webClientId: process.env.EXPO_PUBLIC_ANDROID_GOOGLE_API_KEY,
+                    webClientId: process.env.EXPO_PUBLIC_WEB_GOOGLE_API_KEY,
                 });
             }
         } catch (error) {
@@ -63,6 +66,7 @@ export default function AuthModal({ setModalVisible }: { setModalVisible: (val: 
                 },
                 process.env.EXPO_PUBLIC_JWT_SECRET!
             )
+            console.log(token)
         } catch (error) {
             console.log(error)
         }
