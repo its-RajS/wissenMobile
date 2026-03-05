@@ -2,8 +2,11 @@ import { fontSizes, windowHeight, windowWidth } from '@/themes/app.constants'
 import {
     GoogleSignin
 } from '@react-native-google-signin/google-signin'
+import axios from 'axios'
 import { BlurView } from 'expo-blur'
 import JWT from "expo-jwt"
+import { router } from 'expo-router'
+import * as SecureStore from 'expo-secure-store'
 import React, { useEffect } from 'react'
 import { Image, Platform, Pressable, Text, View } from 'react-native'
 
@@ -66,7 +69,14 @@ export default function AuthModal({ setModalVisible }: { setModalVisible: (val: 
                 },
                 process.env.EXPO_PUBLIC_JWT_SECRET!
             )
-            console.log(token)
+            // console.log(token)
+            const res = await axios.post(`${process.env.EXPO_PUBLIC_API_URL}/login`, {
+                signedToken: token
+            })
+
+            await SecureStore.setItemAsync("accessToken", res.data.accessToken)
+
+            router.push("/(tabs)")
         } catch (error) {
             console.log(error)
         }
