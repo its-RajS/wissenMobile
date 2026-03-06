@@ -156,7 +156,6 @@ export default function AuthModal({ setModalVisible }: { setModalVisible: (val: 
                 avatar: (("avatar_url" in data ? (data.avatar_url ?? "") : "") as string),
                 githubUserName: login ?? undefined,
             })
-            console.log(data)
         }
         catch (error) {
             console.log(error);
