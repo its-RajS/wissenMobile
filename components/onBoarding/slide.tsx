@@ -75,7 +75,7 @@ export default function Slide({
                                 color: "#05030D",
                                 fontFamily: "Poppins_600SemiBold",
                             }}
-                        >
+                        > 
                             {slide.title}
                         </Text>
                         <Text

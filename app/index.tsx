@@ -28,6 +28,6 @@ export default function index() {
                     <Redirect href={!loggedInUser ? '/(routes)/onBoarding' : '/(tabs)'} />
                 )
             }
-        </>
+        </> 
     )
 } 
