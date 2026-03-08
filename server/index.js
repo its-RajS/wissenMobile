@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import jwt from 'jsonwebtoken';
+import { isAuthenticated } from "./middleware/auth.js";
 import prisma from './utils/prisma.js';
 import { sendToken } from './utils/sendToken.js';
 
@@ -92,6 +93,20 @@ app.post("/login", async (req, res) => {
             message: "Internal server error.",
         });
     }
+});
+
+//me
+app.get("/me",isAuthenticated, async (req, res) => {
+   try {
+    const user = req.user
+    res.status(201).json({
+        success: true,
+        user
+    })
+
+   } catch (error) {
+    console.log(`Me: ${error}`)
+   }   
 });
 
 
