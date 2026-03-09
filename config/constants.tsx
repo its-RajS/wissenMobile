@@ -133,7 +133,6 @@ export const NotificationsData = [
     },
 ];
 
-
 export const FAQData = [
     {
         id: 1,
